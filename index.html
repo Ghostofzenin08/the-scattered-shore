@@ -1,0 +1,196 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="frost">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>The Scattered Shore | तटीय चेतना | विखुरलेला किनारा</title>
+  <meta name="description" content="Official web reader for The Scattered Shore (तटीय चेतना) - A progression fantasy webnovel about shattered consciousness, nine pillars, and solitary survival.">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@600;700;800&family=Eczar:wght@500;600;700&family=Lora:ital,wght@0,400;0,500;0,600;1,400&family=Noto+Sans+Devanagari:wght@400;500;600;700&family=Noto+Serif+Devanagari:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+  <div class="reading-progress-bar" id="progressBar"></div>
+
+  <!-- Top Navigation Header -->
+  <header class="site-header">
+    <div class="header-inner">
+      <div class="header-left">
+        <button id="drawerToggle" class="icon-btn" aria-label="Toggle Table of Contents" title="Table of Contents">
+          <svg viewBox="0 0 24 24" width="22" height="22" stroke="currentColor" stroke-width="2" fill="none" stroke-linecap="round"><line x1="3" y1="12" x2="21" y2="12"></line><line x1="3" y1="6" x2="21" y2="6"></line><line x1="3" y1="18" x2="21" y2="18"></line></svg>
+        </button>
+        <div class="brand">
+          <a href="#" class="brand-title" id="siteTitle">The Scattered Shore</a>
+          <span class="brand-subtitle" id="siteSubtitle">तटीय चेतना</span>
+        </div>
+      </div>
+
+      <div class="header-center">
+        <!-- Quick Chapter Navigator in Header -->
+        <div class="chapter-nav-inline">
+          <button id="prevChapterBtnTop" class="nav-arrow-btn" aria-label="Previous Chapter" title="Previous Chapter">‹</button>
+          <span id="currentChapterIndicatorTop" class="chapter-indicator">Chapter 1</span>
+          <button id="nextChapterBtnTop" class="nav-arrow-btn" aria-label="Next Chapter" title="Next Chapter">›</button>
+        </div>
+      </div>
+
+      <div class="header-right">
+        <!-- Language Switcher Toggle -->
+        <div class="lang-switch-group" role="group" aria-label="Language selection">
+          <button class="lang-btn active" data-lang="en">EN</button>
+          <button class="lang-btn" data-lang="hi">हिन्दी</button>
+          <button class="lang-btn" data-lang="mr">मराठी</button>
+        </div>
+
+        <!-- Custom Local Chapters Folder Picker -->
+        <button id="loadLocalFolderBtn" class="btn-subtle" title="Load chapters from your local final_chapters folder">
+          <svg viewBox="0 0 24 24" width="16" height="16" stroke="currentColor" stroke-width="2" fill="none"><path d="M22 19a2 2 0 0 1-2 2H4a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h5l2 3h9a2 2 0 0 1 2 2z"></path></svg>
+          <span id="loadFolderLabel">Load Chapters</span>
+        </button>
+        <!-- Hidden input for directory selection fallback -->
+        <input type="file" id="directoryInput" webkitdirectory directory multiple style="display: none;">
+
+        <!-- Settings Button -->
+        <button id="settingsBtn" class="icon-btn" aria-label="Reading Settings" title="Reader Settings">
+          <svg viewBox="0 0 24 24" width="20" height="20" stroke="currentColor" stroke-width="2" fill="none"><circle cx="12" cy="12" r="3"></circle><path d="M19.4 15a1.65 1.65 0 0 0 .33 1.82l.06.06a2 2 0 0 1 0 2.83 2 2 0 0 1-2.83 0l-.06-.06a1.65 1.65 0 0 0-1.82-.33 1.65 1.65 0 0 0-1 1.51V21a2 2 0 0 1-2 2 2 2 0 0 1-2-2v-.09A1.65 1.65 0 0 0 9 19.4a1.65 1.65 0 0 0-1.82.33l-.06.06a2 2 0 0 1-2.83 0 2 2 0 0 1 0-2.83l.06-.06a1.65 1.65 0 0 0 .33-1.82 1.65 1.65 0 0 0-1.51-1H3a2 2 0 0 1-2-2 2 2 0 0 1 2-2h.09A1.65 1.65 0 0 0 4.6 9a1.65 1.65 0 0 0-.33-1.82l-.06-.06a2 2 0 0 1 0-2.83 2 2 0 0 1 2.83 0l.06.06a1.65 1.65 0 0 0 1.82.33H9a1.65 1.65 0 0 0 1-1.51V3a2 2 0 0 1 2-2 2 2 0 0 1 2 2v.09a1.65 1.65 0 0 0 1 1.51 1.65 1.65 0 0 0 1.82-.33l.06-.06a2 2 0 0 1 2.83 0 2 2 0 0 1 0 2.83l-.06.06a1.65 1.65 0 0 0-.33 1.82V9a1.65 1.65 0 0 0 1.51 1H21a2 2 0 0 1 2 2 2 2 0 0 1-2 2h-.09a1.65 1.65 0 0 0-1.51 1z"></path></svg>
+        </button>
+      </div>
+    </div>
+  </header>
+
+  <!-- Table of Contents Drawer -->
+  <aside id="drawer" class="drawer">
+    <div class="drawer-header">
+      <h3 id="tocHeading">Table of Contents</h3>
+      <button id="drawerClose" class="icon-btn" aria-label="Close Drawer">&times;</button>
+    </div>
+    <div class="drawer-search">
+      <input type="text" id="chapterSearch" placeholder="Search chapters..." aria-label="Search chapters">
+    </div>
+    <div class="drawer-info" id="drawerSourceInfo">
+      <span class="badge" id="sourceBadge">Default Chapters</span>
+      <span class="chapter-count" id="chapterCount">0 chapters</span>
+    </div>
+    <nav class="chapter-list" id="chapterList"></nav>
+    <div class="drawer-footer">
+      <button id="drawerLoadFolderBtn" class="btn-primary-block">
+        <svg viewBox="0 0 24 24" width="16" height="16" stroke="currentColor" stroke-width="2" fill="none"><path d="M22 19a2 2 0 0 1-2 2H4a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h5l2 3h9a2 2 0 0 1 2 2z"></path></svg>
+        <span id="drawerLoadFolderLabel">Load Local 'final chapters'</span>
+      </button>
+    </div>
+  </aside>
+  <div id="drawerOverlay" class="overlay"></div>
+
+  <!-- Reader Settings Modal -->
+  <div id="settingsModal" class="modal">
+    <div class="modal-dialog">
+      <div class="modal-header">
+        <h3 id="settingsTitle">Reading Preferences</h3>
+        <button id="settingsClose" class="icon-btn">&times;</button>
+      </div>
+      <div class="modal-body">
+        <!-- Theme Selection -->
+        <div class="setting-row">
+          <label id="themeLabel">Theme</label>
+          <div class="theme-switcher">
+            <button class="theme-option theme-frost active" data-theme="frost" title="Frost Abyss (Dark Teal)">Frost</button>
+            <button class="theme-option theme-obsidian" data-theme="obsidian" title="Obsidian (Pitch Black)">Night</button>
+            <button class="theme-option theme-sepia" data-theme="sepia" title="Warm Parchment">Sepia</button>
+            <button class="theme-option theme-light" data-theme="light" title="Crisp White">Light</button>
+          </div>
+        </div>
+
+        <!-- Font Family Selection -->
+        <div class="setting-row">
+          <label id="fontFamilyLabel">Font Family</label>
+          <div class="font-switcher">
+            <button class="font-option active" data-font="serif" id="fontSerifBtn">Serif</button>
+            <button class="font-option" data-font="sans" id="fontSansBtn">Sans</button>
+            <button class="font-option" data-font="classic" id="fontClassicBtn">Cinzel / Eczar</button>
+          </div>
+        </div>
+
+        <!-- Font Size Adjuster -->
+        <div class="setting-row">
+          <label id="fontSizeLabel">Font Size</label>
+          <div class="size-controls">
+            <button id="fontSizeDecBtn" class="size-btn">A-</button>
+            <span id="fontSizeDisplay">18px</span>
+            <button id="fontSizeIncBtn" class="size-btn">A+</button>
+          </div>
+        </div>
+
+        <!-- Line Height -->
+        <div class="setting-row">
+          <label id="lineHeightLabel">Line Spacing</label>
+          <div class="spacing-controls">
+            <button class="spacing-btn" data-lh="1.6" id="lhCompactBtn">Compact</button>
+            <button class="spacing-btn active" data-lh="1.85" id="lhNormalBtn">Normal</button>
+            <button class="spacing-btn" data-lh="2.1" id="lhRelaxedBtn">Relaxed</button>
+          </div>
+        </div>
+
+        <!-- Reading Width -->
+        <div class="setting-row">
+          <label id="contentWidthLabel">Reading Width</label>
+          <div class="width-controls">
+            <button class="width-btn active" data-width="normal" id="widthNormalBtn">Standard</button>
+            <button class="width-btn" data-width="wide" id="widthWideBtn">Wide</button>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Main Content Container -->
+  <main class="reader-container" id="readerContainer">
+    <!-- Chapter Metadata Header -->
+    <header class="chapter-header">
+      <div class="chapter-meta">
+        <span class="arc-badge" id="chapterArc">Arc 1</span>
+        <span class="meta-dot">•</span>
+        <span class="chapter-number-label" id="chapterNumberLabel">Chapter 1</span>
+        <span class="meta-dot">•</span>
+        <span class="reading-time" id="readingTime">10 min read</span>
+      </div>
+      <h1 class="chapter-title" id="chapterTitle">The Ash and the Hollow Corpses</h1>
+      <p class="chapter-original-title" id="chapterSubTitle">भस्म आणि पोकळ मृतदेह</p>
+    </header>
+
+    <!-- Chapter Content Body -->
+    <article class="chapter-body" id="chapterBody">
+      <!-- Dynamic markdown rendered here -->
+    </article>
+
+    <!-- Bottom Navigation Bar -->
+    <nav class="chapter-footer-nav">
+      <button id="prevChapterBtnBottom" class="footer-nav-btn prev">
+        <span class="nav-sub" id="prevChapterSub">Previous</span>
+        <span class="nav-title" id="prevChapterTitle">← None</span>
+      </button>
+      <button id="drawerToggleBottom" class="footer-nav-btn center">
+        <span class="nav-sub" id="tocSub">Directory</span>
+        <span class="nav-title" id="tocTitle">All Chapters</span>
+      </button>
+      <button id="nextChapterBtnBottom" class="footer-nav-btn next">
+        <span class="nav-sub" id="nextChapterSub">Next</span>
+        <span class="nav-title" id="nextChapterTitle">Next Chapter →</span>
+      </button>
+    </nav>
+  </main>
+
+  <!-- Sticky Quick Action Floating Bar (mobile friendly) -->
+  <div class="quick-action-bar">
+    <button id="floatingPrevBtn" class="floating-btn" aria-label="Previous Chapter">‹</button>
+    <button id="floatingTocBtn" class="floating-btn" aria-label="Table of Contents">☰</button>
+    <button id="floatingLangBtn" class="floating-btn text-btn" aria-label="Toggle Language">EN</button>
+    <button id="floatingSettingsBtn" class="floating-btn" aria-label="Settings">⚙</button>
+    <button id="floatingNextBtn" class="floating-btn" aria-label="Next Chapter">›</button>
+  </div>
+
+  <!-- Scripts -->
+  <script src="sample_chapters.js"></script>
+  <script src="app.js"></script>
+</body>
+</html>
