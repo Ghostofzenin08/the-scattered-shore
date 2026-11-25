@@ -1,4 +1,4 @@
-# The Scattered Shore (तटीय चेतना / विखुरलेला किनारा) - Official Web Reader
+# The Scattered Shore ( - Official Web Reader
 
 An atmospheric, trilingual web reader for the progression fantasy webnovel **The Scattered Shore**.
 
