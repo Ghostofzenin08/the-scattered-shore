@@ -1,6 +1,7 @@
-# The Scattered Shore ( - Official Web Reader
+# Echo Of Dread: Flowers of Ashes Are Never Meant to Be Plucked
+### (इको ऑफ ड्रेड: राख के फूल कभी तोड़े नहीं जाते / दहशतीचा नाद: राखेची फुले कधी खुडण्यासाठी नसतात) - Official Web Reader
 
-An atmospheric, trilingual web reader for the progression fantasy webnovel **The Scattered Shore**.
+An atmospheric, trilingual web reader for the progression fantasy webnovel **Echo Of Dread: Flowers of Ashes Are Never Meant to Be Plucked**.
 
 ## Features
 
