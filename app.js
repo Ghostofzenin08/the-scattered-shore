@@ -1,5 +1,6 @@
 /**
- * THE SCATTERED SHORE - Reader Application Logic
+ * ECHO OF DREAD: Flowers of Ashes Are Never Meant to Be Plucked
+ * Reader Application Logic
  * Supports: Trilingual Localization (EN / HI / MR)
  * Features: Chapter Navigation, Theme Engine, Font Engine, Local Folder Importer
  */
@@ -10,8 +11,8 @@
   // --- UI Translations Dictionary ---
   const I18N = {
     en: {
-      siteTitle: "The Scattered Shore",
-      siteSubtitle: "तटीय चेतना",
+      siteTitle: "Echo Of Dread",
+      siteSubtitle: "Flowers of Ashes",
       tocHeading: "Table of Contents",
       chapterSearchPlaceholder: "Search chapters...",
       loadFolderLabel: "Load Chapters",
@@ -36,8 +37,8 @@
       loadSuccessMsg: "Loaded {count} chapters from your folder!"
     },
     hi: {
-      siteTitle: "द स्कैटर्ड शोर",
-      siteSubtitle: "तटीय चेतना",
+      siteTitle: "इको ऑफ ड्रेड",
+      siteSubtitle: "राख के फूल",
       tocHeading: "अनुक्रमणिका (अध्याय सूची)",
       chapterSearchPlaceholder: "अध्याय खोजें...",
       loadFolderLabel: "अध्याय लोड करें",
@@ -62,8 +63,8 @@
       loadSuccessMsg: "आपके फ़ोल्डर से {count} अध्याय सफलतापूर्वक लोड किए गए!"
     },
     mr: {
-      siteTitle: "द स्कॅटर्ड शोर",
-      siteSubtitle: "विखुरलेला किनारा",
+      siteTitle: "दहशतीचा नाद",
+      siteSubtitle: "राखेची फुले",
       tocHeading: "अनुक्रमणिका (प्रकरणे)",
       chapterSearchPlaceholder: "प्रकरण शोधा...",
       loadFolderLabel: "प्रकरणे लोड करा",
